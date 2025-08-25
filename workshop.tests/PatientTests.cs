@@ -1,22 +1,56 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
+using System.Transactions;
 
 namespace workshop.tests;
 
-public class Tests
+public class SurgeryTests
 {
+    private WebApplicationFactory<Program> _factory;
+    private HttpClient _client;
+
+
+    [SetUp]
+    public void SetUp()
+    {
+        _factory = new WebApplicationFactory<Program>();
+        _client = _factory.CreateClient();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _client.Dispose();
+        _factory.Dispose();
+    }
+
 
     [Test]
-    public async Task PatientEndpointStatus()
+    public async Task GetEndpointStatus()
     {
-        // Arrange
-        var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder => { });
-        var client = factory.CreateClient();
+        var response = await _client.GetAsync("/surgery/patients");
 
-        // Act
-        var response = await client.GetAsync("/patients");
+        Console.WriteLine(response.ToString());
 
         // Assert
-        Assert.IsTrue(response.StatusCode == System.Net.HttpStatusCode.OK);
+        Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.OK));
     }
+
+
+
+    [TestCase(1)]
+    public async Task GetPatientIdStatus( int id)
+    {
+        var response = await _client.GetAsync($"/surgery/patients/{id}");
+
+        Console.WriteLine(response.ToString());
+        // Assert
+        Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.OK));
+    }
+
+
+
+
+
 }
