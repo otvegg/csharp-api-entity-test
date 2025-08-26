@@ -38,7 +38,11 @@ namespace workshop.wwwapi.Endpoints
                 List<AppointmentDoctor> appointments = new List<AppointmentDoctor>();
                 foreach (var appointment in patient.Appointments)
                 {
-                    appointments.Add(new AppointmentDoctor { DoctorId = appointment.DoctorId, DoctorName = appointment.Doctor.FullName, booking = appointment.Booking });
+                    appointments.Add(new AppointmentDoctor { 
+                        DoctorId = appointment.DoctorId, 
+                        DoctorName = appointment.Doctor.FullName, 
+                        booking = appointment.Booking, 
+                        Type=appointment.Type });
                 }
                 patients.Add(new PatientGet { Name = patient.FullName, Appointments = appointments });
             }
@@ -54,7 +58,12 @@ namespace workshop.wwwapi.Endpoints
             List<AppointmentDoctor> appointments = new List<AppointmentDoctor>();
             foreach (var appointment in patient.Appointments)
             {
-                appointments.Add(new AppointmentDoctor { DoctorId = appointment.DoctorId, DoctorName = appointment.Doctor.FullName, booking = appointment.Booking });
+                appointments.Add(new AppointmentDoctor { 
+                    DoctorId = appointment.DoctorId,
+                    DoctorName = appointment.Doctor.FullName, 
+                    booking = appointment.Booking,
+                    Type = appointment.Type
+                });
             }
             PatientGet p = new PatientGet { Name = patient.FullName, Appointments = appointments };
             return TypedResults.Ok(p);
@@ -78,7 +87,12 @@ namespace workshop.wwwapi.Endpoints
                 List<AppointmentPatient> appointments = new List<AppointmentPatient>();
                 foreach ( var appointment in doctor.Appointments)
                 {
-                    appointments.Add(new AppointmentPatient { PatientId = appointment.PatientId, PatientName = appointment.Patient.FullName, booking = appointment.Booking });
+                    appointments.Add(new AppointmentPatient { 
+                        PatientId = appointment.PatientId, 
+                        PatientName = appointment.Patient.FullName, 
+                        booking = appointment.Booking,
+                        Type = appointment.Type
+                    });
                 }
                 doctors.Add(new DoctorGet { Name = doctor.FullName, Appointments = appointments });
             }
@@ -94,7 +108,12 @@ namespace workshop.wwwapi.Endpoints
             List<AppointmentPatient> appointments = new List<AppointmentPatient>();
             foreach (var appointment in doctor.Appointments)
             {
-                appointments.Add(new AppointmentPatient { PatientId = appointment.PatientId, PatientName = appointment.Patient.FullName, booking = appointment.Booking });
+                appointments.Add(new AppointmentPatient { 
+                    PatientId = appointment.PatientId, 
+                    PatientName = appointment.Patient.FullName, 
+                    booking = appointment.Booking,
+                    Type = appointment.Type
+                });
             }
             DoctorGet p = new DoctorGet { Name = doctor.FullName, Appointments = appointments };
             return TypedResults.Ok(p);
@@ -122,7 +141,8 @@ namespace workshop.wwwapi.Endpoints
                     DoctorId = appointment.DoctorId,
                     DoctorName = appointment.Doctor.FullName,
                     PatientId = appointment.PatientId,
-                    PatientName = appointment.Patient.FullName
+                    PatientName = appointment.Patient.FullName,
+                    Type = appointment.Type
                 });
             }
             return TypedResults.Ok(appointments);
@@ -140,7 +160,8 @@ namespace workshop.wwwapi.Endpoints
                 DoctorId = appointment.DoctorId,
                 DoctorName = appointment.Doctor.FullName,
                 PatientId = appointment.PatientId,
-                PatientName = appointment.Patient.FullName
+                PatientName = appointment.Patient.FullName,
+                Type = appointment.Type
             };
             return TypedResults.Ok(AppGet);
         }
@@ -162,7 +183,8 @@ namespace workshop.wwwapi.Endpoints
                     DoctorId = appointment.DoctorId,
                     DoctorName = appointment.Doctor.FullName,
                     PatientId = appointment.PatientId,
-                    PatientName = appointment.Patient.FullName
+                    PatientName = appointment.Patient.FullName,
+                    Type = appointment.Type
                 });
             }
             return AppGets.Count() > 0 ? TypedResults.Ok(AppGets) : TypedResults.Ok("No booked appointments");
@@ -184,7 +206,8 @@ namespace workshop.wwwapi.Endpoints
                     DoctorId = appointment.DoctorId,
                     DoctorName = appointment.Doctor.FullName,
                     PatientId = appointment.PatientId,
-                    PatientName = appointment.Patient.FullName
+                    PatientName = appointment.Patient.FullName,
+                    Type = appointment.Type
                 });
             }
             return AppGets.Count() > 0 ? TypedResults.Ok(AppGets) : TypedResults.Ok("No booked appointments");

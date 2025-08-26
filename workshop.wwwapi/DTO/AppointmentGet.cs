@@ -1,8 +1,11 @@
-﻿namespace workshop.wwwapi.DTO
+﻿using workshop.wwwapi.Models;
+
+namespace workshop.wwwapi.DTO
 {
     public class AppointmentGet
     {
         public DateTime booktime {  get; set; }
+        public AppointmentType Type { get; set; }
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public int PatientId { get; set; }
