@@ -205,6 +205,7 @@ namespace workshop.wwwapi.Endpoints
             else if (doctor == null) return TypedResults.NotFound("Doctor not found");
 
             // check if doctor or patient already has an appointment at the time?
+            // this will fail if the patient doctor combo already exists as we use the composite key of their ids
             Appointment appointment = await repository.Insert(new Appointment { PatientId = model.patientId, DoctorId = model.doctorId, Booking = model.booking });
 
             string s = $"Patient {patient.FullName} got appointment with {doctor.FullName} at {appointment.Booking}";
