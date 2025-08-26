@@ -138,6 +138,7 @@ public class SurgeryTests
         var json = JsonSerializer.Serialize(appointment);
         var requestBody = new StringContent(json, Encoding.UTF8, "application/json");
 
+        // THIS TEST FAILS IF THE PATIENT DOCTOR COMBO IS ALREADY IN THE DATABASE
         var response = await _client.PostAsync("/surgery/appointment", requestBody);
 
 
