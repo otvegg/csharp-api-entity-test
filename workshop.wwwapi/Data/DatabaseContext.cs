@@ -25,9 +25,9 @@ namespace workshop.wwwapi.Data
 
             DateTime somedate = new DateTime(2020,12,05, 0, 0, 0, DateTimeKind.Utc);
             modelBuilder.Entity<Appointment>().HasData(
-                new Appointment {PatientId = 1, DoctorId = 1, Booking = somedate.AddDays(1) },
-                new Appointment {PatientId = 2, DoctorId = 1, Booking = somedate.AddDays(2) },
-                new Appointment {PatientId = 1, DoctorId = 2, Booking = somedate.AddDays(3) }
+                new Appointment {PatientId = 1, DoctorId = 1, Booktime = somedate.AddDays(1) },
+                new Appointment {PatientId = 2, DoctorId = 1, Booktime = somedate.AddDays(2) },
+                new Appointment {PatientId = 1, DoctorId = 2, Booktime = somedate.AddDays(3) }
             );
 
 

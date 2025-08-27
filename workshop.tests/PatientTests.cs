@@ -134,7 +134,7 @@ public class SurgeryTests
     [Test]
     public async Task CreateAppointmentStatus()
     {
-        AppointmentPost appointment = new AppointmentPost { patientId = 4, doctorId = 2, booking = DateTime.Parse("2024-03-06T00:00:00").ToUniversalTime() };
+        AppointmentPost appointment = new AppointmentPost { patientId = 4, doctorId = 2, Booktime = DateTime.Parse("2024-03-06T00:00:00").ToUniversalTime() };
         var json = JsonSerializer.Serialize(appointment);
         var requestBody = new StringContent(json, Encoding.UTF8, "application/json");
 

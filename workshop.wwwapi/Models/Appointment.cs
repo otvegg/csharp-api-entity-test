@@ -9,7 +9,7 @@ namespace workshop.wwwapi.Models
     public class Appointment
     {
         [Column("booktime")]
-        public DateTime Booking { get; set; }
+        public DateTime Booktime { get; set; }
 
         [Column("type")]
         public AppointmentType Type { get; set; }

@@ -7,6 +7,6 @@ namespace workshop.wwwapi.DTO
         public int patientId {  get; set; }
         public int doctorId { get; set; }
         public AppointmentType Type {  get; set; }
-        public DateTime booking { get; set; }
+        public DateTime Booktime { get; set; }
     }
 }

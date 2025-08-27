@@ -13,6 +13,7 @@ builder.Services.AddDbContext<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Patient>,Repository<Patient>>();
 builder.Services.AddScoped<IRepository<Doctor>, Repository<Doctor>>();
 builder.Services.AddScoped<IRepository<Appointment>, Repository<Appointment>>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

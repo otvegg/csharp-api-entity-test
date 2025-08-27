@@ -4,11 +4,11 @@ namespace workshop.wwwapi.DTO
 {
     public class AppointmentGet
     {
-        public DateTime booktime {  get; set; }
+        public DateTime Booktime {  get; set; }
         public AppointmentType Type { get; set; }
         public int DoctorId { get; set; }
-        public string DoctorName { get; set; }
+        public string? DoctorFullName { get; set; }
         public int PatientId { get; set; }
-        public string PatientName { get; set; }
+        public string? PatientFullName { get; set; }
     }
 }
